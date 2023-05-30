@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest installer (as specified by INSTALLER_TYPE) for Sassafras AllSight/LabSight/KeySight.
 
-INSTALLER_TYPE can have a value of client, admin, or server. You may create an override and set this value yourself,
+INSTALLER_TYPE can have a value of client or admin. You may create an override and set this value yourself,
 or you can use the SassafrasClient, SassafrasAdmin, and SassafrasServer recipes respectively as a convenience.
 </string>
 	<key>Identifier</key>
@@ -23,11 +23,24 @@ or you can use the SassafrasClient, SassafrasAdmin, and SassafrasServer recipes 
 	<array>
 		<dict>
 			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>ksp-client-([0-9]+)</string>
+				<key>url</key>
+				<string>https://www.sassafras.com/client-download/</string>
+				<key>result_output_var_name</key>
+				<string>REVISION</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>https://www.sassafras.com/software/release/current/Installers/macos/%INSTALLER_TYPE%/ksp-%INSTALLER_TYPE%.pkg</string>
+				<string>https://www.sassafras.com/links/ksp-%INSTALLER_TYPE%-%REVISION%-latest.pkg</string>
 			</dict>
 		</dict>
 		<dict>
