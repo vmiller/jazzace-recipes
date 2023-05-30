@@ -5,15 +5,22 @@
 	<key>Description</key>
 	<string>Downloads the latest installer (as specified by INSTALLER_TYPE) for Sassafras AllSight/LabSight/KeySight.
 
-INSTALLER_TYPE can have a value of client, admin, or server. You may create an override and set this value yourself,
+INSTALLER_TYPE can have a value of client or admin. You may create an override and set this value yourself,
 or you can use the SassafrasClient, SassafrasAdmin, and SassafrasServer recipes respectively as a convenience.
+
+REVISION is the major version without a decimal, for example:
+7.7: 77
+7.8: 78
+7.9: 79
 </string>
 	<key>Identifier</key>
 	<string>com.github.jazzace.download.sassafrasallsight</string>
 	<key>Input</key>
 	<dict>
 		<key>INSTALLER_TYPE</key>
-		<string>client</string>
+		<string>admin</string>
+		<key>REVISION</key>
+		<string></string>		
 		<key>NAME</key>
 		<string>AllSight</string>
 	</dict>
@@ -27,7 +34,7 @@ or you can use the SassafrasClient, SassafrasAdmin, and SassafrasServer recipes 
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>https://www.sassafras.com/software/release/current/Installers/macos/%INSTALLER_TYPE%/ksp-%INSTALLER_TYPE%.pkg</string>
+				<string>https://www.sassafras.com/links/ksp-%INSTALLER_TYPE%-%REVISION%-latest.pkg</string>
 			</dict>
 		</dict>
 		<dict>
